@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue[90],
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Card Example')),
+        appBar: AppBar(title: Text('CP-Tracker')),
         backgroundColor: Colors.pink[50],
         body: MyCardWidget(),
       ),
@@ -39,27 +39,35 @@ class MyCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var a=new Customcard();
     return Center(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                a.getcard(context,"CODECHEF"),
-                a.getcard(context,"CODEFORCES"),
-              ],
-            ),
-            Row(
-              children: [
-                a.getcard(context,"HACKEREARTH"),
-                a.getcard(context,"LEETCODE"),
-              ],
-            ),
-            Row(
-              children: [
-                a.getcard(context,"ATCODER"),
-                a.getcard(context,"OTHER"),
-              ],
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  a.getcard(context,"CodeChef"),
+                  a.getcard(context,"CodeForces"),
+                ],
+              ),
+              Row(
+                children: [
+                  a.getcard(context,"HackerEarth"),
+                  a.getcard(context,"LeetCode"),
+                ],
+              ),
+              Row(
+                children: [
+                  a.getcard(context,"AtCoder"),
+                  a.getcard(context,"HackerRank"),
+                ],
+              ),
+              Row(
+                children: [
+                  a.getcard(context,"TopCoder"),
+                  a.getcard(context,"Kick Start"),
+                ],
+              )
+            ],
+          ),
         )
     );
   }

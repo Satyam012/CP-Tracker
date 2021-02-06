@@ -33,6 +33,7 @@ class _DetailState extends State<Detail> {
 
     setState(() {
       loading = false;
+      //print(tagObjs);
     });
   }
 
@@ -45,6 +46,7 @@ class _DetailState extends State<Detail> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child:  loading
           ? Center(
@@ -71,13 +73,11 @@ Widget Customcard(String Name,String platform,String Starttime,String Endtime,St
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ListTile(
-          leading: Image.asset('assets/$platform.png',
-            height: 100,
-            width: 50,
-          ),
+          leading: Image.asset('assets/$platform.png'),
           title: Text('\n$Name'),
           subtitle: Text('\nSTART-TIME: $Starttime\n\nEND-TIME: $Endtime'),
         ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
