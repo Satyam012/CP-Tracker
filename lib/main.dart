@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import './contest.dart';
+import './tracker/Handle.dart';
 
-String Cname;
 void main() {
   runApp(MyApp());
 }
@@ -23,10 +21,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.pink[50],
         body: MyCardWidget(),
       ),
-      initialRoute: '/',
-      routes: {
-        '/second': (context) => Contest(Cname),
-      },
     );
   }
 }
@@ -39,9 +33,21 @@ class MyCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var a=new Customcard();
     return Center(
+
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Container(
+                margin: EdgeInsets.all(25),
+                child: FlatButton(
+                  child: Text('TRACK-PROGRESS', style: TextStyle(fontSize: 20.0),),
+                  color: Colors.blueAccent,
+                  textColor: Colors.white,
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Handles()));
+                  },
+                ),
+              ),
               Row(
                 children: [
                   a.getcard(context,"CodeChef"),
@@ -101,8 +107,7 @@ class Customcard{
                 child: const Text('View'),
                 onPressed: ()
                 {
-                  Cname=name;
-                  Navigator.pushNamed(context, '/second');
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Contest(name)));
                 }
             ),
           ],
