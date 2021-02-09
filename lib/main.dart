@@ -17,7 +17,20 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue[90],
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('CP-Tracker')),
+        appBar: AppBar(title:
+        Row(
+            children:[
+              Text('CP',style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              ),),
+              Text('-'),
+              Text('Tracker',style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold
+              )),
+            ]
+        )),
         backgroundColor: Colors.pink[50],
         body: MyCardWidget(),
       ),
@@ -36,6 +49,7 @@ class MyCardWidget extends StatelessWidget {
 
         child: SingleChildScrollView(
           child: Column(
+
             children: [
               Container(
                 margin: EdgeInsets.all(25),
@@ -49,24 +63,28 @@ class MyCardWidget extends StatelessWidget {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   a.getcard(context,"CodeChef"),
                   a.getcard(context,"CodeForces"),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   a.getcard(context,"HackerEarth"),
                   a.getcard(context,"LeetCode"),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   a.getcard(context,"AtCoder"),
                   a.getcard(context,"HackerRank"),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   a.getcard(context,"TopCoder"),
                   a.getcard(context,"Kick Start"),

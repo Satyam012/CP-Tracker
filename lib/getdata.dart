@@ -20,6 +20,5 @@ class Data {
             );
             data.add(article);
     });
-   // print(data[0].Name);
   }
 }

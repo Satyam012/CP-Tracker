@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'getdata.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 String Str;
 class Contest extends StatelessWidget {
@@ -83,7 +82,6 @@ Widget Customcard(String Name,String platform,String Starttime,String Endtime,St
           children: <Widget>[
             RaisedButton(
               child: const Text('OPEN'),
-              //onPressed: ()=> _launchURL,
               onPressed: (){},
             ),
             const SizedBox(width: 8),
@@ -94,12 +92,3 @@ Widget Customcard(String Name,String platform,String Starttime,String Endtime,St
   );
 }
 
-
-// _launchURL() async {
-//   const url = 'www.google.com';
-//   if (await canLaunch(url)) {
-//     await launch(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }
