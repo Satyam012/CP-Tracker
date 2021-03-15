@@ -45,51 +45,48 @@ class MyCustomFormState extends State<MyCustomForm> {
       width: 400,
       child: Form(
         key: _formKey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 150, 10, 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextFormField(
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.person),
-                  hintText: 'Enter your Codechef Handle',
-                  labelText: 'CodeChef',
-                ),
-                onChanged: (text){
-                  cc=text;
-                },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.person),
+                hintText: 'Enter your Codechef Handle',
+                labelText: 'CodeChef',
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.person),
-                  hintText: 'Enter your CodeForces Handle',
-                  labelText: 'CodeForces',
-                ),
-                onChanged: (text){
-                  cf=text;
-                },
+              onChanged: (text){
+                cc=text;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.person),
+                hintText: 'Enter your CodeForces Handle',
+                labelText: 'CodeForces',
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.person),
-                  hintText: 'Enter your LeetCode Handle',
-                  labelText: 'LeetCode',
-                ),
-                onChanged: (text){
-                  lc=text;
-                },
+              onChanged: (text){
+                cf=text;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.person),
+                hintText: 'Enter your LeetCode Handle',
+                labelText: 'LeetCode',
               ),
-              SizedBox(height: 20,width: 20,),
-              RaisedButton(
-                  child: const Text('View'),
-                  onPressed: ()
-                  {
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Progress(cc,cf,lc)));
-                  }
-              ),
-            ],
-          ),
+              onChanged: (text){
+                lc=text;
+              },
+            ),
+            SizedBox(height: 20,width: 20,),
+            RaisedButton(
+                child: const Text('View'),
+                onPressed: ()
+                {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Progress(cc,cf,lc)));
+                }
+            ),
+          ],
         ),
       ),
     );
