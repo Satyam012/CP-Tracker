@@ -13,10 +13,8 @@
 </ul>
 
 # Screenshot- 
-
-![](screenshots/1.jpg)
-
+<img src="/screenshots/1.jpg" width="500">
 <br><hr><br>
-![](screenshots/2.jpg)
+<img src="/screenshots/1.jpg" width="500">
 <br><hr><br>
-![](screenshots/3.jpg)
+<img src="/screenshots/1.jpg" width="500">
