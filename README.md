@@ -1,17 +1,16 @@
 # CP-TRACKER APP
 
-<br>
 <ul>
     <li>
-        <h4>It allows user to view details of live/upcoming programming contest in different platform like
+        <h4>It allows users to view details of live/upcoming programming contests in different platforms like
         <i>CodeChef, CodeForces, Leetcode,</i> etc.</h4>
     </li>
     <li>
-        <h4>User can track their progress like number of problems they solved,about their Rating and Ranking, etc. in
+        <h4>Users can track their progress like number of problems they solved,about their Rating and Ranking, etc. in
         different Coding platforms.</h4>
     </li>
 </ul>
-
+<br>
 # Screenshot- 
 <img src="/screenshots/1.jpg" width="500">
 <br><hr>
