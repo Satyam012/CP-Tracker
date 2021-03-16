@@ -1,43 +1,51 @@
 import 'package:flutter/material.dart';
 import './contest.dart';
 import './tracker/Handle.dart';
-
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+                children:[
+                  Text('CP',style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                  ),),
+                  Text('-'),
+                  Text('Tracker',style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold
+                  )),
+                ]
+            ),
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.home), text: "Contest"),
+                Tab(icon: Icon(Icons.search), text: "Track")
+              ],
+            ),
+          ),
+          backgroundColor: Colors.pink[50],
+          body: TabBarView(
+            children: [
+              MyCardWidget(),
+              MyCustomForm(),
+            ],
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.blue[90],
-      ),
-      home: Scaffold(
-        appBar: AppBar(title:
-        Row(
-            children:[
-              Text('CP',style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold
-              ),),
-              Text('-'),
-              Text('Tracker',style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold
-              )),
-            ]
-        )),
-        backgroundColor: Colors.pink[50],
-        body: MyCardWidget(),
-      ),
     );
   }
 }
-
 
 class MyCardWidget extends StatelessWidget {
   MyCardWidget({Key key}) : super(key: key);
@@ -51,17 +59,7 @@ class MyCardWidget extends StatelessWidget {
           child: Column(
 
             children: [
-              Container(
-                margin: EdgeInsets.all(25),
-                child: FlatButton(
-                  child: Text('TRACK-PROGRESS', style: TextStyle(fontSize: 20.0),),
-                  color: Colors.blueAccent,
-                  textColor: Colors.white,
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Handles()));
-                  },
-                ),
-              ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -134,3 +132,4 @@ class Customcard{
     );
   }
 }
+

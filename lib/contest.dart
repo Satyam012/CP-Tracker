@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'getdata.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 String Str;
 class Contest extends StatelessWidget {
@@ -84,7 +86,7 @@ Widget Customcard(String Name,String platform,String Starttime,String Endtime,St
   String stime=convert(Starttime);
   String etime=convert(Endtime);
   return Card(
-    color: Colors.lightGreenAccent,
+    color: Colors.cyan[50],
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -93,19 +95,21 @@ Widget Customcard(String Name,String platform,String Starttime,String Endtime,St
           title: Text('\n$Name'),
           subtitle: Text('\nSTART-TIME: $stime\n\nEND-TIME: $etime'),
         ),
+        SizedBox(height: 10),
+        Container(
+          child: new RaisedButton(
+            onPressed: (){
+              launchURL(url);
+            },
+            child: new Text('Open'),
+          ),
+        ),
         SizedBox(height: 20),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: <Widget>[
-        //     RaisedButton(
-        //       child: const Text('OPEN'),
-        //       onPressed: (){},
-        //     ),
-        //     const SizedBox(width: 8),
-        //   ],
-        // ),
       ],
     ),
   );
 }
 
+launchURL(String url) async {
+  await launch(url);
+}

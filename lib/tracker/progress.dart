@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'CCDATA.dart';
 import 'CFDATA.dart';
 import 'LCDATA.dart';
-import '';
+import 'package:pie_chart/pie_chart.dart';
 String cc,cf,lc;
 class Progress extends StatelessWidget {
     final String codechef,codeforces,leetcode;
@@ -14,7 +14,21 @@ class Progress extends StatelessWidget {
     lc=leetcode;
     return Scaffold(
       backgroundColor: Colors.pink[50],
-      appBar: AppBar(title: Text('CP-Tracker')),
+      appBar: AppBar(title: Row(
+          children:[
+            Text('CP',style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+                fontWeight: FontWeight.bold
+            ),),
+            Text('-'),
+            Text('Tracker',style: TextStyle(
+                color: Colors.white,
+                fontSize: 23,
+                fontWeight: FontWeight.bold
+            )),
+          ]
+      ),),
       body: Detail(),
     );
   }
@@ -26,7 +40,7 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  bool loading;
+  bool loading,show=false;
   var data1,data2,data3;
 
   void getcontest() async {
@@ -41,10 +55,10 @@ class _DetailState extends State<Detail> {
     LCdata object3 = LCdata(lc);
     await object3.getdata();
     data3 = object3.lc;
+    show=object3.flag;
 
     setState(() {
       loading = false;
-      //print(tagObjs);
     });
   }
 
@@ -64,13 +78,31 @@ class _DetailState extends State<Detail> {
         child: CircularProgressIndicator(),
       )
           : SingleChildScrollView(
-        child: Column(
+        child: Container(
 
-            children:[
-              if(data1.length>0)CCcard(data1["rating"],data1["star"],data1["highest_rating"],data1["global_rank"],data1["country_rank"]),
-              if(data2.length>0)CFcard(data2["rating"],data2["max_rating"],data2["rank"],data2["max_rank"]),
-              if(data3.length>0)LCcard(data3["ranking"],data3["total_problems_solved"],data3["easy_questions_solved"],data3["medium_questions_solved"],data3["hard_questions_solved"],data3["contribution_points"]),
-            ]
+          child: Column(
+              children:[
+                if(show==true)
+                Container(
+                    color: Colors.black26,
+                    child: Text('LeetCode Problem Solved:                       ',style: TextStyle(fontSize: 20)),
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(10),
+                ),
+
+                if(show==true)
+                PieChart(dataMap: {
+                   "Easy": double.parse(data3["easy_questions_solved"]),
+                   "Medium": double.parse(data3["medium_questions_solved"]),
+                   "Hard": double.parse(data3["hard_questions_solved"]),
+                }),
+
+                if(data2.length>0)CFcard(data2["rating"],data2["max_rating"],data2["rank"],data2["max_rank"]),
+                if(data1.length>0)CCcard(data1["rating"],data1["star"],data1["highest_rating"],data1["global_rank"],data1["country_rank"]),
+                if(data3.length>0)LCcard(data3["ranking"],data3["total_problems_solved"],data3["easy_questions_solved"],data3["medium_questions_solved"],data3["hard_questions_solved"],data3["contribution_points"]),
+              ]
+
+          ),
         ),
       ),
     );
@@ -81,7 +113,7 @@ class _DetailState extends State<Detail> {
 Widget CCcard(var rating,var star,var highest_rating,var global_rank, var country_rank){
 
   return Card(
-    color: Colors.purple[50],
+    color: Colors.deepOrange[200],
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -97,7 +129,7 @@ Widget CCcard(var rating,var star,var highest_rating,var global_rank, var countr
 Widget CFcard(var rank,var highest_rank,var rating,var highest_rating){
 
   return Card(
-    color: Colors.lightGreenAccent,
+    color: Colors.cyanAccent,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -110,10 +142,10 @@ Widget CFcard(var rank,var highest_rank,var rating,var highest_rating){
   );
 }
 
-Widget LCcard(var ranking,var total_problems_solved,var easy_questions_solved,var medium_questions_solved,var hard_questions_solved,var contribution_points){
+Widget LCcard(String ranking,String total_problems_solved,String easy_questions_solved,String medium_questions_solved,String hard_questions_solved,String contribution_points){
 
   return Card(
-    color: Colors.amberAccent,
+    color: Colors.deepPurple[200],
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -125,5 +157,3 @@ Widget LCcard(var ranking,var total_problems_solved,var easy_questions_solved,va
     ),
   );
 }
-
-
