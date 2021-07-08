@@ -2,32 +2,12 @@ import 'package:flutter/material.dart';
 import 'getdata.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-String Str;
-class Contest extends StatelessWidget {
-  final String name;
-  Contest(this.name);
+
+class Allcontest extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    Str=name;
     return Scaffold(
-      backgroundColor: Colors.pink[50],
-      appBar: AppBar(
-        title: Row(
-            children:[
-              Text('CP',style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold
-              ),),
-              Text('-'),
-              Text('Tracker',style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold
-              )),
-            ]
-        ),
-      ),
       body: Detail(),
     );
   }
@@ -49,7 +29,7 @@ class _DetailState extends State<Detail> {
 
     setState(() {
       loading = false;
-      //print(tagObjs);
+      // tagObjs.sort();
     });
   }
 
@@ -69,14 +49,14 @@ class _DetailState extends State<Detail> {
         child: CircularProgressIndicator(),
       )
           : SingleChildScrollView(
-          child: Column(
+        child: Column(
             children:[
-            for(int i=0;i<tagObjs.length;i++)
-              if(tagObjs[i].Platform==Str)
-                Customcard(tagObjs[i].Name,tagObjs[i].Platform,tagObjs[i].StartTime,tagObjs[i].EndTime,tagObjs[i].url)
-          ]
+              for(int i=0;i<tagObjs.length;i++)
+                if(tagObjs[i].Platform=="LeetCode"||tagObjs[i].Platform=="CodeForces"||tagObjs[i].Platform=="AtCoder"||tagObjs[i].Platform=="Kick Start"||tagObjs[i].Platform=="Kick Start")
+                  Customcard(tagObjs[i].Name,tagObjs[i].Platform,tagObjs[i].StartTime,tagObjs[i].EndTime,tagObjs[i].url)
+            ]
+        ),
       ),
-    ),
     );
   }
 }

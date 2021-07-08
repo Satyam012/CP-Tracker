@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './contest.dart';
 import './tracker/Handle.dart';
+import 'allcontest.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             title: Row(
@@ -28,16 +29,18 @@ class MyApp extends StatelessWidget {
             ),
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.home), text: "Contest"),
-                Tab(icon: Icon(Icons.search), text: "Track")
+                Tab(icon: Icon(Icons.home), text: "Home"),
+                Tab(icon: Icon(Icons.search), text: "Track"),
+                Tab(icon: Icon(Icons.leaderboard), text: "Contest"),
               ],
             ),
           ),
-          backgroundColor: Colors.pink[50],
+          backgroundColor: Colors.white,
           body: TabBarView(
             children: [
               MyCardWidget(),
               MyCustomForm(),
+              Allcontest(),
             ],
           ),
         ),
@@ -48,18 +51,15 @@ class MyApp extends StatelessWidget {
 }
 
 class MyCardWidget extends StatelessWidget {
-  MyCardWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var a=new Customcard();
-    return Center(
 
+    return Center(
         child: SingleChildScrollView(
           child: Column(
-
             children: [
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -109,7 +109,7 @@ class Customcard{
         color: Colors.green[200],
         elevation: 10,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             SizedBox(height: 10),
             Center(

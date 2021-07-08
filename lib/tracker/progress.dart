@@ -85,23 +85,24 @@ class _DetailState extends State<Detail> {
                 if(show==true)
                 Container(
                     color: Colors.black26,
-                    child: Text('LeetCode Problem Solved:                       ',style: TextStyle(fontSize: 20)),
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(10),
+                    child: Text('LeetCode Problem Solved:',style: TextStyle(fontSize: 20)),
+                    margin: EdgeInsets.fromLTRB(40, 10, 40, 0),
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                 ),
 
                 if(show==true)
-                PieChart(dataMap: {
-                   "Easy": double.parse(data3["easy_questions_solved"]),
-                   "Medium": double.parse(data3["medium_questions_solved"]),
-                   "Hard": double.parse(data3["hard_questions_solved"]),
-                }),
-
+                Padding(
+                  padding: EdgeInsets.fromLTRB(40, 15, 25, 5),
+                  child: PieChart(dataMap: {
+                     "Easy": double.parse(data3["easy_questions_solved"]),
+                     "Medium": double.parse(data3["medium_questions_solved"]),
+                     "Hard": double.parse(data3["hard_questions_solved"]),
+                  }),
+                ),
+                if(data3.length>0)LCcard(data3["ranking"],data3["total_problems_solved"],data3["easy_questions_solved"],data3["medium_questions_solved"],data3["hard_questions_solved"],data3["contribution_points"]),
                 if(data2.length>0)CFcard(data2["rating"],data2["max_rating"],data2["rank"],data2["max_rank"]),
                 if(data1.length>0)CCcard(data1["rating"],data1["star"],data1["highest_rating"],data1["global_rank"],data1["country_rank"]),
-                if(data3.length>0)LCcard(data3["ranking"],data3["total_problems_solved"],data3["easy_questions_solved"],data3["medium_questions_solved"],data3["hard_questions_solved"],data3["contribution_points"]),
-              ]
-
+                ]
           ),
         ),
       ),
@@ -113,13 +114,22 @@ class _DetailState extends State<Detail> {
 Widget CCcard(var rating,var star,var highest_rating,var global_rank, var country_rank){
 
   return Card(
-    color: Colors.deepOrange[200],
+    margin: EdgeInsets.fromLTRB(40, 10, 40, 10),
+    color: Colors.cyan[50],
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ListTile(
-          title: Text('\nCODECHEF'),
-          subtitle: Text('\nSTAR: $star\n\nCurrent-Rating: $rating\n\nHighest Rating: $highest_rating\n\nCountry Rank: $country_rank\n\nGlobal Rank: $global_rank\n\n'),
+        Padding(
+          padding: EdgeInsets.fromLTRB(25, 5, 25, 0),
+          child: ListTile(
+            title: Text('\nCODECHEF',style: TextStyle(
+              color: Colors.deepOrangeAccent,
+              fontWeight: FontWeight.bold,
+            ),),
+            subtitle: Text('\nSTAR: $star\n\nCurrent-Rating: $rating\n\nHighest Rating: $highest_rating\n\nCountry Rank: $country_rank\n\nGlobal Rank: $global_rank\n\n',
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
         ),
       ],
     ),
@@ -129,13 +139,20 @@ Widget CCcard(var rating,var star,var highest_rating,var global_rank, var countr
 Widget CFcard(var rank,var highest_rank,var rating,var highest_rating){
 
   return Card(
-    color: Colors.cyanAccent,
+    margin: EdgeInsets.fromLTRB(40, 10, 40, 10),
+    color: Colors.cyan[50],
     child: Column(
-      mainAxisSize: MainAxisSize.min,
+      // mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ListTile(
-          title: Text('\nCODEFORCES'),
-          subtitle: Text('\nCurrent-Rating: $rating\n\nHighest Rating: $highest_rating\n\nCurrent Rank: $rank\n\nHighest Rank: $highest_rank\n\n'),
+        Padding(
+          padding: EdgeInsets.fromLTRB(25, 5, 25, 0),
+          child: ListTile(
+            title: Text('\nCODEFORCES',style: TextStyle(
+              color: Colors.red[800],
+              fontWeight: FontWeight.bold,
+            ),),
+            subtitle: Text('\nCurrent-Rating: $rating\n\nHighest Rating: $highest_rating\n\nCurrent Rank: $rank\n\nHighest Rank: $highest_rank\n\n',style: TextStyle(color: Colors.black),),
+          ),
         ),
       ],
     ),
@@ -145,13 +162,20 @@ Widget CFcard(var rank,var highest_rank,var rating,var highest_rating){
 Widget LCcard(String ranking,String total_problems_solved,String easy_questions_solved,String medium_questions_solved,String hard_questions_solved,String contribution_points){
 
   return Card(
-    color: Colors.deepPurple[200],
+    margin: EdgeInsets.fromLTRB(40, 10, 40, 10),
+    color: Colors.cyan[50],
     child: Column(
-      mainAxisSize: MainAxisSize.min,
+      // mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ListTile(
-          title: Text('\nLEETCODE'),
-          subtitle: Text('\nCurrent-Rank: $ranking\n\nTotal Problems Solved: $total_problems_solved\n\nEasy Questions Solved: $easy_questions_solved\n\nMedium Questions Solved: $medium_questions_solved\n\nHard Questions Solved: $hard_questions_solved\n\nTotal Point: $contribution_points\n\n'),
+        Padding(
+          padding: EdgeInsets.fromLTRB(25, 5, 25, 0),
+          child: ListTile(
+            title: Text('\nLEETCODE', style: TextStyle(
+              color: Colors.deepPurple,
+              fontWeight: FontWeight.bold,
+            ),),
+            subtitle: Text('\nCurrent-Rank: $ranking\n\nTotal Problems Solved: $total_problems_solved\n\nEasy Questions Solved: $easy_questions_solved\n\nMedium Questions Solved: $medium_questions_solved\n\nHard Questions Solved: $hard_questions_solved\n\nTotal Point: $contribution_points\n\n',style: TextStyle(color: Colors.black),),
+          ),
         ),
       ],
     ),
